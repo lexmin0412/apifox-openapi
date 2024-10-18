@@ -3,7 +3,7 @@ name: publish node package
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   publish-npm:
