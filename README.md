@@ -2,6 +2,8 @@
 
 Apifox 开放 API 的 JavaScript SDK.
 
+![version](https://img.shields.io/npm/v/apifox-openapi) ![downloads-month](https://img.shields.io/npm/dm/apifox-openapi)
+
 ## 用法
 
 ```js
