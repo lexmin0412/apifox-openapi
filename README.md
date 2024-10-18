@@ -29,6 +29,6 @@ instance.importOpenApi(result).then((res)=>{
 })
 ```
 
-## 参考文档
+## 相关链接
 
 - [Apifox 开放 API](https://apifox-openapi.apifox.cn/doc-4296592)
