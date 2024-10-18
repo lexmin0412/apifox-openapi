@@ -1,0 +1,51 @@
+{
+  "name": "apifox-openapi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:commonjs": "rimraf lib && tsc --target es5 --outDir lib --module commonjs --declaration",
+    "build:es": "rimraf es && tsc --target es6 --outDir es --module es6",
+    "build": "npm run build:commonjs && npm run build:es",
+    "ts": "ts-node src/",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": {
+    "name": "lexmin0412",
+    "email": "zhangle_dev@outlook.com",
+    "url": "https://github.com/lexmin0412"
+  },
+  "license": "ISC",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "types": "./lib/index.d.ts",
+  "jsnext:main": "./es/index.js",
+  "module": "./es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lexmin0412/apifox-openapi.git",
+    "directory": ""
+  },
+  "bugs": {
+    "url": "https://github.com/lexmin0412/apifox-openapi/issues"
+  },
+  "homepage": "https://github.com/lexmin0412/apifox-openapi#readme",
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.6",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@toolkit-fe/request": "^0.1.22"
+  }
+}
