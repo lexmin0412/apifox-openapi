@@ -11,9 +11,9 @@ dependencies:
   '@toolkit-fe/request': 0.1.22
 
 devDependencies:
-  '@types/node': 22.7.6
+  '@types/node': 22.7.7
   rimraf: 6.0.1
-  ts-node: 10.9.2_mykwna64els3ujvnqzs2xnpc4a
+  ts-node: 10.9.2_4r5275lus7gzg2seruno5cqlvu
   typescript: 5.6.3
 
 packages:
@@ -73,8 +73,8 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
-  /@types/node/22.7.6:
-    resolution: {integrity: sha512-/d7Rnj0/ExXDMcioS78/kf1lMzYk4BZV8MZGTBKzTGZ6/406ukkbYlIsZmMPhcR5KlkunDHQLrtAVmSq7r+mSw==}
+  /@types/node/22.7.7:
+    resolution: {integrity: sha512-SRxCrrg9CL/y54aiMCG3edPKdprgMVGDXjA3gB8UmmBW5TcXzRUYAh8EWzTnSJFAd1rgImPELza+A3bJ+qxz8Q==}
     dependencies:
       undici-types: 6.19.8
     dev: true
@@ -302,7 +302,7 @@ packages:
       ansi-regex: 6.1.0
     dev: true
 
-  /ts-node/10.9.2_mykwna64els3ujvnqzs2xnpc4a:
+  /ts-node/10.9.2_4r5275lus7gzg2seruno5cqlvu:
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -321,7 +321,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.7.6
+      '@types/node': 22.7.7
       acorn: 8.13.0
       acorn-walk: 8.3.4
       arg: 4.1.3

@@ -11,6 +11,10 @@
     "ts": "ts-node src/",
     "prepublishOnly": "npm run build"
   },
+	"engines": {
+		"pnpm": "^7.18.2"
+	},
+	"packageManager": "pnpm@7.18.2",
   "keywords": [],
   "author": {
     "name": "lexmin0412",
