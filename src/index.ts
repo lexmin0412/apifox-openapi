@@ -1,5 +1,5 @@
 import { request } from "@toolkit-fe/request";
-import { IOverwriteBehavior } from "./types";
+import { IExportOpenApiType, IImportOpenApiType, IImportPostmanCollection, IImportPostmanCollectionOptions } from "./types";
 
 interface IApifoxOpenApiOptions {
 	/**
@@ -17,12 +17,27 @@ interface IApifoxOpenApiOptions {
 	 * 获取地址：https://apifox-openapi.apifox.cn/doc-4296599
 	 */
 	accessToken: string;
+	/**
+	 * 国际化标识，示例：zh-CN
+	 */
+	locale: string
 }
 
 const basePrefix = "https://api.apifox.com/v1/projects";
 
 export class ApifoxOpenApi {
-	constructor(options: IApifoxOpenApiOptions) {
+	constructor(options: IApifoxOpenApiOptions = {
+		apiVersion: "3.0",
+		projectId: "",
+		accessToken: "",
+		locale: "zh-CN"
+	}) {
+		if (!options.projectId)  {
+			throw new Error("apiVersion is required");
+		}
+		if (!options.accessToken) {
+			throw new Error("accessToken is required");
+		}
 		this.options = options;
 		this.request = (path: string, options: RequestInit) => {
 			return request(`${basePrefix}${path}`, {
@@ -46,34 +61,9 @@ export class ApifoxOpenApi {
 	 * @param input 需要导入的 OpenAPI 数据，支持字符串或者 URL 方式导入
 	 * @param options 包含高级选项及其值的导入过程对象。
 	 */
-	importOpenApi(
+	importOpenApi: IImportOpenApiType = (
 		input: string,
-		options: {
-			/**
-			 * 用于存储或匹配 API 接口的目标目录的 ID。如果未指定，目标目录将为 Root 目录
-			 */
-			targetEndpointFolderId?: number;
-			/**
-			 * 用于存储或匹配数据模型的目标目录的 ID。如果未指定，目标目录将为 Root 目录
-			 */
-			targetSchemaFolderId?: number;
-			/**
-			 * 指定处理匹配的接口的行为。确定是否覆盖现有的接口，自动合并更改，跳过更改并保留现有的接口，或创建新的接口。
-			 */
-			endpointOverwriteBehavior?: IOverwriteBehavior;
-			/**
-			 * 指定处理匹配的数据模型的行为。确定是否覆盖现有的模式，自动合并更改，跳过更改并保留现有的模式，或创建新的模式。
-			 */
-			schemaOverwriteBehavior?: IOverwriteBehavior;
-			/**
-			 * 在导入匹配的现有接口时，是否更新接口的目录 ID。如果希望随导入的接口一起更改目录 ID，则应将其设置为 true。
-			 */
-			updateFolderOfChangedEndpoint?: boolean;
-			/**
-			 * 是否将基础路径添加到接口的路径中，默认设置为 false。我们建议将其设置为 false，这样基础路径可以保留在“环境面板”中，而不是每个接口内部。如果希望在接口路径中添加路径前缀，则应将其设置为 true。
-			 */
-			prependBasePath?: boolean;
-		} = {
+		options = {
 			targetEndpointFolderId: 0,
 			targetSchemaFolderId: 0,
 			endpointOverwriteBehavior: "OVERWRITE_EXISTING",
@@ -81,9 +71,9 @@ export class ApifoxOpenApi {
 			updateFolderOfChangedEndpoint: true,
 			prependBasePath: false,
 		}
-	) {
+	) => {
 		return this.request(
-			`/${this.options.projectId}/import-openapi?locale=zh-CN`,
+			`/${this.options.projectId}/import-openapi?locale=${this.options.locale}`,
 			{
 				method: "POST",
 				body: JSON.stringify({
@@ -91,27 +81,26 @@ export class ApifoxOpenApi {
 					options,
 				}),
 			}
-		) as Promise<{
-			data: {
-				counters: {
-					endpointCreated: number;
-					endpointUpdated: number;
-					endpointFailed: number;
-					endpointIgnored: number;
-					schemaCreated: number;
-					schemaUpdated: number;
-					schemaFailed: number;
-					schemaIgnored: number;
-					endpointFolderCreated: number;
-					endpointFolderUpdated: number;
-					endpointFolderFailed: number;
-					endpointFolderIgnored: number;
-					schemaFolderCreated: number;
-					schemaFolderUpdated: number;
-					schemaFolderFailed: number;
-					schemaFolderIgnored: number;
-				};
-			};
-		}>;
+		);
+	}
+
+	/**
+	 * 导出 OpenAPI/Swagger 格式数据
+	 */
+	exportOpenApi: IExportOpenApiType = (options) => {
+		return this.request(`/${this.options.projectId}/export-openapi?locale=zh-CN`, {
+			method: "POST",
+			body: JSON.stringify(options),
+		});
+	}
+
+	/**
+	 * 导入 Postman Collection 格式数据, 当前支持导入 Postman Collection v2 格式数据
+	 */
+	importPostmanCollection: IImportPostmanCollection = (input: string, options: IImportPostmanCollectionOptions) => {
+		return this.request(`/${this.options.projectId}/import-postman-collection`, {
+			method: "POST",
+			body: JSON.stringify({ input, options }),
+		});
 	}
 }
