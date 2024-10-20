@@ -52,9 +52,9 @@ export class ApifoxOpenApi {
 		};
 	}
 
-	options: IApifoxOpenApiOptions;
+	private options: IApifoxOpenApiOptions;
 
-	request: (url: string, options: RequestInit) => Promise<any>;
+	private request: (url: string, options: RequestInit) => Promise<any>;
 
 	/**
 	 * 导入 OpenAPI/Swagger 格式数据
