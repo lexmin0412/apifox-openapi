@@ -88,7 +88,7 @@ export class ApifoxOpenApi {
 	 * 导出 OpenAPI/Swagger 格式数据
 	 */
 	exportOpenApi: IExportOpenApiType = (options) => {
-		return this.request(`/${this.options.projectId}/export-openapi?locale=zh-CN`, {
+		return this.request(`/${this.options.projectId}/export-openapi?locale=${this.options.locale}`, {
 			method: "POST",
 			body: JSON.stringify(options),
 		});
