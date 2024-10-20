@@ -133,7 +133,7 @@ export interface IImportApiResponse {
 /**
  * 导入 API 接口的函数
  */
-export type IImportOpenApiType = (input: string, options: IImportApiOptions) => Promise<IImportApiResponse>
+export type IImportOpenApiType = (input: string, options?: IImportApiOptions) => Promise<IImportApiResponse>
 
 /**
  * 导出 API 接口的响应
@@ -160,7 +160,7 @@ type IExportOpenApiScope = {
 	/**
 	 * 排除掉包含指定标签的内容
 	 */
-	excludedByTags: string[]
+	excludedByTags?: string[]
 } | {
 	type: 'SELECTED_ENDPOINTS'
 	/**
@@ -170,7 +170,7 @@ type IExportOpenApiScope = {
 	/**
 	 * 排除掉包含指定标签的内容
 	 */
-	excludedByTags: string[]
+	excludedByTags?: string[]
 } | {
 	type: 'SELECTED_TAGS'
 	/**
@@ -180,7 +180,7 @@ type IExportOpenApiScope = {
 	/**
 	 * 排除掉包含指定标签的内容
 	 */
-	excludedByTags: string[]
+	excludedByTags?: string[]
 } | {
 	type: 'SELECTED_FOLDERS'
 	/**
@@ -190,7 +190,7 @@ type IExportOpenApiScope = {
 	/**
 	 * 排除掉包含指定标签的内容
 	 */
-	excludedByTags: string[]
+	excludedByTags?: string[]
 }
 
 type IExportOpenApiOptions = {

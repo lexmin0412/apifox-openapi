@@ -1,5 +1,5 @@
 import { request } from "@toolkit-fe/request";
-import { IExportOpenApiType, IImportOpenApiType, IImportPostmanCollection, IImportPostmanCollectionOptions } from "./types";
+import { IExportOpenApiType, IImportOpenApiType, IImportPostmanCollection } from "./types";
 
 interface IApifoxOpenApiOptions {
 	/**
@@ -87,7 +87,12 @@ export class ApifoxOpenApi {
 	/**
 	 * 导出 OpenAPI/Swagger 格式数据
 	 */
-	exportOpenApi: IExportOpenApiType = (options) => {
+	exportOpenApi: IExportOpenApiType = (options = {
+		scope: {
+			type: 'ALL',
+			excludedByTags: []
+		}
+	}) => {
 		return this.request(`/${this.options.projectId}/export-openapi?locale=${this.options.locale}`, {
 			method: "POST",
 			body: JSON.stringify(options),
@@ -97,7 +102,7 @@ export class ApifoxOpenApi {
 	/**
 	 * 导入 Postman Collection 格式数据, 当前支持导入 Postman Collection v2 格式数据
 	 */
-	importPostmanCollection: IImportPostmanCollection = (input: string, options: IImportPostmanCollectionOptions) => {
+	importPostmanCollection: IImportPostmanCollection = (input, options) => {
 		return this.request(`/${this.options.projectId}/import-postman-collection`, {
 			method: "POST",
 			body: JSON.stringify({ input, options }),
