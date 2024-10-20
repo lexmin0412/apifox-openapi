@@ -23,7 +23,7 @@ const instance = new ApifoxOpenApi({
   projectId: '9999999'
 })
 
-// 调用 API
+// 导入 API
 instance.importOpenApi(result).then((res)=>{
   console.log('导入成功', res)
 }).catch((err)=>{
