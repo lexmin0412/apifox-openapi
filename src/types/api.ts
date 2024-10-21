@@ -228,7 +228,7 @@ type IExportOpenApiOptions = {
 /**
  * 导出 API 接口的函数
  */
-export type IExportOpenApiType = (options: IExportOpenApiOptions) => Promise<IExportOpenApiResponse>
+export type IExportOpenApiType = (options?: IExportOpenApiOptions) => Promise<IExportOpenApiResponse>
 
 /**
  * 包含高级选项及其值的用于导入过程的对象。
