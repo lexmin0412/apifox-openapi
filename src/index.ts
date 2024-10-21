@@ -3,18 +3,15 @@ import { IExportOpenApiType, IImportOpenApiType, IImportPostmanCollection } from
 
 interface IApifoxOpenApiOptions {
 	/**
-	 * Apifox 开放 API 版本
-	 * 获取地址：https://apifox-openapi.apifox.cn/doc-4296596
+	 * Apifox 开放 API 版本, 获取地址：https://apifox-openapi.apifox.cn/doc-4296596
 	 */
 	apiVersion: string;
 	/**
-	 * Apifox 项目 ID
-	 * 获取方式：项目设置-通用设置-基本设置-基本信息-项目ID
+	 * Apifox 项目 ID, 获取方式：项目设置-通用设置-基本设置-基本信息-项目ID
 	 */
 	projectId: string;
 	/**
-	 * Apifox 开放 API 访问令牌
-	 * 获取地址：https://apifox-openapi.apifox.cn/doc-4296599
+	 * Apifox 开放 API 访问令牌, 获取地址：https://apifox-openapi.apifox.cn/doc-4296599
 	 */
 	accessToken: string;
 	/**
