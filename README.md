@@ -20,6 +20,12 @@ Apifox 开放 API 的 JavaScript SDK.
 
 ## 用法 
 
+### 安装
+
+```shell
+pnpm add apifox-openapi
+```
+
 ### 初始化实例
 
 ```js
