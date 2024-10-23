@@ -99,7 +99,7 @@ export class ApifoxOpenApi {
 	/**
 	 * 导入 Postman Collection 格式数据, 当前支持导入 Postman Collection v2 格式数据
 	 */
-	importPostmanCollection: IImportPostmanCollection = (input, options) => {
+	importPostmanCollection: IImportPostmanCollection = (input, options = {}) => {
 		return this.request(`/${this.options.projectId}/import-postman-collection`, {
 			method: "POST",
 			body: JSON.stringify({ input, options }),
